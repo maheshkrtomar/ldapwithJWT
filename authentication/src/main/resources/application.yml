@@ -1,0 +1,29 @@
+eureka:
+  client:
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+server:
+  port: '8085'
+spring:
+  ldap:
+    embedded:
+      base-dn: dc=innovativeintelli,dc=com
+      ldif: classpath:localldapactivedirectory.ldif
+      port: 12345
+      validation:
+        enabled: false
+        
+  application:
+    name: authentication-service
+zuul:
+  routes:
+    serviceA:
+      path: /corevalue-api/**
+      serviceId: corevalue-service
+   
